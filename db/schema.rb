@@ -17,10 +17,11 @@ ActiveRecord::Schema.define(version: 2021_01_28_221359) do
 
   create_table "tag_messages", force: :cascade do |t|
     t.bigint "tag_id"
-    t.string "text"
+    t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tag_id"], name: "index_tag_messages_on_tag_id"
+    t.index ["text"], name: "index_tag_messages_on_text", unique: true
   end
 
   create_table "tags", force: :cascade do |t|
@@ -31,9 +32,10 @@ ActiveRecord::Schema.define(version: 2021_01_28_221359) do
 
   create_table "user_messages", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "text"
+    t.string "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["text"], name: "index_user_messages_on_text", unique: true
     t.index ["user_id"], name: "index_user_messages_on_user_id"
   end
 

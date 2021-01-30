@@ -5,5 +5,10 @@
   <%= @tag.name %>
 </p>
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
+<ul>
+  <% @tag.tag_messages.each do |message| %>
+    <li><%= message.text %></li>
+  <% end %>
+</ul>
+
 <%= link_to 'Back', tags_path %>
