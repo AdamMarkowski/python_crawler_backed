@@ -5,8 +5,14 @@
   <%= @tag.name %>
 </p>
 
+<%= form_with url: url_for(only_path: false), method: :get do |form| %>
+  Form contents
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
 <ul>
-  <% @tag.tag_messages.each do |message| %>
+  <% @tag.filtered_messages(params[:query]).each do |message| %>
     <li><%= message.text %></li>
   <% end %>
 </ul>
